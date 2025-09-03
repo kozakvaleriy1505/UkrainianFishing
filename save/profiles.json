@@ -1,0 +1,22 @@
+{
+  "nickname": "Kozak",
+  "difficulty": "звичайно",
+  "money": 200,
+  "inventory": {
+    "gear": [],
+    "food": [],
+    "fish": []
+  },
+  "location": {
+    "waterbody": "Річка Молочна",
+    "spot": "Туристична база"
+  },
+  "time": {
+    "day": 1,
+    "hour": 6
+  },
+  "stats": {
+    "saturation": 100,
+    "alcohol_level": 0.0
+  }
+}
