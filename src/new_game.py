@@ -1,11 +1,22 @@
 import pygame
+import json
+import os
 
 def run(screen):
     pygame.font.init()
     font = pygame.font.SysFont("arial", 32)
     small_font = pygame.font.SysFont("arial", 24)
 
-    input_text = "Я у мами риболов"
+    #спроба завантажити фон
+    try:
+        background = pygame.image.load("assets/backgrounds/window.png")
+        background = pygame.transform.scale(background, screen.get_size())
+        use_image = True
+    except Exception as e:
+        print(f"[!] Не вдалося завантажити фон: {e}")
+        use_image = False
+
+    input_text = "Я у мами рибалка"
     active_input = True
 
     difficulties = ["Легка", "Нормально", "Важка"]
@@ -13,7 +24,10 @@ def run(screen):
 
     running = True
     while running:
-        screen.fill((50, 80, 120))
+        if use_image:
+            screen.blit(background, (0, 0))
+        else:
+            screen.fill((50, 80, 120))
 
         # Заголовок
         title = font.render("Створення нового профілю", True, (255, 255, 255))
@@ -63,6 +77,41 @@ def run(screen):
             elif event.type == pygame.MOUSEBUTTONDOWN:
                 x, y = event.pos
                 if 300 <= x <= 500 and 400 <= y <= 440:
+                    nickname = input_text.strip()
+                    if nickname == "":
+                        print("[!] Ім’я профілю не може бути порожнім!")
+                        continue
                     print(f"▶ Створення профілю: {input_text}, складність: {difficulties[selected]}")
-                    # TODO: збереження профілю та перехід до гри
-                    running = False
+                    
+                # Створення структури профілю
+
+                difficulty = difficulties[selected]
+                money_map = {"Легка": 1000, "Нормально": 500, "Важка": 200}
+                profile_data = {
+                    "nickname": nickname,
+                    "difficulty": difficulty,
+                    "money": money_map[difficulty],
+                    "inventory": {"gear": [], "food": [], "fish": []},
+                    "location": {"waterbody": "Річка Молочна", "spot": "Туристична база"},
+                    "time": {"day": 1, "hour": 10, "minute": 00},
+                    "stats": {"saturation": 100, "alcohol_level": 0.0}
+                }
+                
+                # Збереження у файл
+                os.makedirs("save", exist_ok=True)
+                save_path = f"save/{nickname}.json"
+                try:
+                    with open(save_path, "w", encoding="utf-8") as f:
+                        json.dump(profile_data, f, ensure_ascii=False, indent=4)
+                    print(f"[✓] Профіль '{nickname}' збережено.")
+                except Exception as e:
+                    print(f"[!] Помилка при збереженні профілю: {e}")
+                    continue
+
+# Перехід до основної гри
+                try:
+                    import game_window
+                    game_window.run(screen, save_path)
+                except Exception as e:
+                    print(f"[!] Не вдалося запустити ігролад: {e}")    
+                running = False

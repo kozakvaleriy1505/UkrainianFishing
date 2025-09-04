@@ -1,0 +1,23 @@
+{
+    "nickname": "333",
+    "difficulty": "Нормально",
+    "money": 500,
+    "inventory": {
+        "gear": [],
+        "food": [],
+        "fish": []
+    },
+    "location": {
+        "waterbody": "Річка Молочна",
+        "spot": "Туристична база"
+    },
+    "time": {
+        "day": 1,
+        "hour": 10,
+        "minute": 0
+    },
+    "stats": {
+        "saturation": 100,
+        "alcohol_level": 0.0
+    }
+}
