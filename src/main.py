@@ -25,7 +25,7 @@ class TextButton:
         return False
     
 pygame.init()
-WIDTH, HEIGHT = 800, 600
+WIDTH, HEIGHT = 1000, 600
 screen = pygame.display.set_mode((WIDTH, HEIGHT))
 pygame.display.set_caption("Ukrainian Fishing")
 

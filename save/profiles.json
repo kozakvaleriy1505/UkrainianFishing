@@ -11,6 +11,10 @@
     "waterbody": "Річка Молочна",
     "spot": "Туристична база"
   },
+    "meta": {
+    "days_paid": 5,
+    "fisher_count": 12
+  },
   "time": {
     "day": 1,
     "hour": 6
