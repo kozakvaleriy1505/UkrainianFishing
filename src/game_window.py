@@ -245,3 +245,6 @@ def run(screen, save_path):
                             except Exception as e:
                                 print(f"[!] Не вдалося відкрити вкладку '{item}': {e}")
     # Кінець while waiting
+    #elif button.text == "Глобальна мапа":
+    #import global_map
+    #global_map.run(screen, profile)

@@ -17,7 +17,7 @@ TENSION_AREA = pygame.Rect(
 )
 
 # Вузька бокова панель зліва
-SIDE_PANEL = pygame.Rect(900, 60, 100, 440)
+SIDE_PANEL = pygame.Rect(880, 60, 120, 440)
 # інфопанель
 INFO_PANEL = pygame.Rect(770, 500, 240, 100)
 
