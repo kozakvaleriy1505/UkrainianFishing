@@ -1,3 +1,4 @@
+# map_window.py
 def run(screen, profile):
     # Вивід заглушки або контенту
     import pygame
